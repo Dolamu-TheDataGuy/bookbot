@@ -5,17 +5,17 @@ def main():
     char_dict = count_character(book_content)
     print_report(book_path, char_dict, num_words)
 
-def get_book_content(book_path):
+def get_book_content(book_path: str) -> str:
     with open(book_path, "r") as f:
         file_content = f.read()
         return file_content
 
-def count_words(file_words):
+def count_words(file_words: str) -> int:
     file_list = file_words.split()
     return len(file_list)
 
-def count_character(book_content):
-    char_dict = {}
+def count_character(book_content: str) -> dict[str, int]:
+    char_dict: dict[str, int] = {}
     
     for text in book_content.split():
         lower_text = text.lower()
@@ -27,10 +27,10 @@ def count_character(book_content):
                     char_dict[char] = 1
     return char_dict
 
-def sort_on(char_dict):
+def sort_on(char_dict: dict) -> int:
     return char_dict["num"]
 
-def print_report(book_path, char_dict, num_word):
+def print_report(book_path: str, char_dict: dict, num_word: int) -> None:
     print(f"--- Begin report of {book_path} ---")
     print(f"{num_word} words found in the doxument")
     char = []
