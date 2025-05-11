@@ -1,11 +1,5 @@
 from stats import count_words
 
-def main():
-    book_path = "books/frankenstein.txt"
-    book_content = get_book_content(book_path)
-    num_words = count_words(book_content)
-    # char_dict = count_character(book_content)
-    # print_report(book_path, char_dict, num_words)
 
 def get_book_content(book_path: str) -> str:
     with open(book_path, "r") as f:
@@ -39,15 +33,24 @@ def print_report(book_path: str, char_dict: dict, num_word: int) -> None:
         per_dict["character"] = letter
         per_dict["num"] = num
         char.append(per_dict)
-    
+
     char.sort(reverse=True, key=sort_on)
-    
+
     for content in char:
         character = content["character"]
         value = content["num"]
         print(f"The {character} character was found {value} times")
-        
+
     print("--- End report ---")
+
+
+def main():
+    book_path = "books/frankenstein.txt"
+    book_content = get_book_content(book_path)
+    num_words = count_words(book_content)
+    print(f"{num_words} words found in the doxument")
+    # char_dict = count_character(book_content)
+    # print_report(book_path, char_dict, num_words)
 
 
 if __name__ == "__main__":
