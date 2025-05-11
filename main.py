@@ -1,18 +1,17 @@
+from stats import count_words
+
 def main():
     book_path = "books/frankenstein.txt"
     book_content = get_book_content(book_path)
     num_words = count_words(book_content)
-    char_dict = count_character(book_content)
-    print_report(book_path, char_dict, num_words)
+    # char_dict = count_character(book_content)
+    # print_report(book_path, char_dict, num_words)
 
 def get_book_content(book_path: str) -> str:
     with open(book_path, "r") as f:
         file_content = f.read()
         return file_content
 
-def count_words(file_words: str) -> int:
-    file_list = file_words.split()
-    return len(file_list)
 
 def count_character(book_content: str) -> dict[str, int]:
     char_dict: dict[str, int] = {}
