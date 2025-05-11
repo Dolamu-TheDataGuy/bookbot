@@ -40,18 +40,18 @@ def print_report(book_path: str, char_dict: dict, num_word: int) -> None:
     for content in char:
         character = content["character"]
         value = content["num"]
-        print(f"The {character} character was found {value} times")
+        print(f"{character}: {value}")
 
     print("--- End report ---")
 
 
 def main():
-    
+
     if len(sys.argv) < 2:
-        print("Usage: python main.py <book_path>")
+        print("Usage: python3 main.py <path_to_book>")
         sys.exit(1)
     book_path = sys.argv[1]
-        
+
     book_content = get_book_content(book_path)
     num_words = count_words(book_content)
     char_dict = count_character(book_content)
