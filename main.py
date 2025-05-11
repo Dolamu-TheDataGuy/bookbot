@@ -1,4 +1,5 @@
 from stats import count_words
+import sys
 
 
 def get_book_content(book_path: str) -> str:
@@ -25,7 +26,7 @@ def sort_on(char_dict: dict) -> int:
 
 def print_report(book_path: str, char_dict: dict, num_word: int) -> None:
     print(f"--- Begin report of {book_path} ---")
-    print(f"{num_word} words found in the doxument")
+    print(f"{num_word} words found in the document")
     char = []
 
     for letter, num in char_dict.items():
@@ -45,12 +46,16 @@ def print_report(book_path: str, char_dict: dict, num_word: int) -> None:
 
 
 def main():
-    book_path = "books/frankenstein.txt"
+    
+    if len(sys.argv) < 2:
+        print("Usage: python main.py <book_path>")
+        sys.exit(1)
+    book_path = sys.argv[1]
+        
     book_content = get_book_content(book_path)
     num_words = count_words(book_content)
-    print(f"{num_words} words found in the doxument")
-    # char_dict = count_character(book_content)
-    # print_report(book_path, char_dict, num_words)
+    char_dict = count_character(book_content)
+    print_report(book_path, char_dict, num_words)
 
 
 if __name__ == "__main__":
